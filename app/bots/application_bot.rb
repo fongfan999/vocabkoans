@@ -1,9 +1,7 @@
 class ApplicationBot
   AVAILABLE_EVENTS = %i(message postback).freeze
 
-  include Facebook::Messenger
   include MessengerEventExtractor
-  include MessengerProfile
 
   attr_reader :bot
 
@@ -24,7 +22,7 @@ class ApplicationBot
     event = messenger_eventify(klass)
     return super if AVAILABLE_EVENTS.exclude?(event)
 
-    Bot.on(event) { |bot| klass.new(bot).perform }
+    Facebook::Messenger::Bot.on(event) { |bot| klass.new(bot).perform }
   end
 
   def initialize(bot)

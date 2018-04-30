@@ -6,3 +6,17 @@ if Rails.env.development?
     end
   end
 end
+
+MESSENGER_PROPERTIES = {
+  get_started: { payload: 'GET_STARTED_PAYLOAD' },
+  persistent_menu: [
+    {
+      locale: 'default',
+      composer_input_disabled: true,
+      call_to_actions: [
+        { type: 'postback', title: 'Get Started', payload: 'GET_STARTED_PAYLOAD' }
+      ]
+    }
+  ]
+}.deep_freeze
+Facebook::Messenger::Profile.set(MESSENGER_PROPERTIES, access_token: ENV['ACCESS_TOKEN'])

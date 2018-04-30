@@ -1,6 +1,6 @@
 class MessageBot < ApplicationBot
   def perform
-    message.typing_on
-    message.reply(text: 'Hello World')
+    bot.typing_on
+    bot.reply(text: %Q(You texted "#{bot.text}"))
   end
 end

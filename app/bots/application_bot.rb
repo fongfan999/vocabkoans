@@ -2,7 +2,7 @@ class ApplicationBot
   AVAILABLE_EVENTS = %i(message postback).freeze
 
   include Facebook::Messenger
-  extend MessengerEventExtractor
+  include MessengerEventExtractor
 
   attr_reader :message
 

@@ -10,6 +10,9 @@ class Payloader::GetStarted < Payloader::Application
   private
 
   def quick_replies
-    text_quick_replies(I18n.t('yes') => 'GET_STARTED', I18n.t('no') => '')
+    text_quick_replies(
+      I18n.t('yes') => 'GET_STARTED',
+      I18n.t('no') => 'CANCEL_SUBSCRIPTION'
+    )
   end
 end

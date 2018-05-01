@@ -12,11 +12,13 @@ namespace :oxford_3000_words_scraper do
 
     File.write('lib/data/3000_words.json', scraped_data.to_json)
 
-    puts "Scraping Successfully in #{Time.current.to_i - start_time}s"
+    puts "Scrap Successfully in #{Time.current.to_i - start_time}s"
   end
 
   task :import => :environment do
+    start_time   = Time.current.to_i
     importer = OxfordDictionaryScraper::Importer.new
     importer.import
+    puts "Import Successfully in #{Time.current.to_i - start_time}s"
   end
 end

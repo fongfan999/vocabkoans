@@ -9,7 +9,7 @@ class ApplicationBot
   # in the available events will process incoming messages, postbacks, deliveries, ...
   # from the Facebook Messenger Platform
 
-  # The class might define `:perform` method to respond Messenger users
+  # The class might define `:perform` method to respond to Messenger users
   # The following example will process `:postback` event:
   #
   # class PostbackBot < ApplicationBot
@@ -31,5 +31,14 @@ class ApplicationBot
 
   def perform
     Rails.logger.warn("`:#{__method__}` is an abstract method. Should we define it?")
+  end
+
+  private
+
+  def payloader
+    @payloader ||= begin
+      classified_payloader = bot.payload.downcase.classify
+      "Payloader::#{classified_payloader}".constantize.new(bot)
+    end
   end
 end

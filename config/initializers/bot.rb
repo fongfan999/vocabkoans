@@ -8,13 +8,13 @@ if Rails.env.development?
 end
 
 MESSENGER_PROPERTIES = {
-  get_started: { payload: 'GET_STARTED_PAYLOAD' },
+  get_started: { payload: 'GET_STARTED' },
   persistent_menu: [
     {
       locale: 'default',
       composer_input_disabled: true,
       call_to_actions: [
-        { type: 'postback', title: 'Get Started', payload: 'GET_STARTED_PAYLOAD' }
+        { type: 'postback', title: 'Get Started', payload: 'GET_STARTED' }
       ]
     }
   ]

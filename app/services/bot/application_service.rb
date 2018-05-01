@@ -1,7 +1,8 @@
 class Bot::ApplicationService
-  attr_reader :sender_id
+  attr_reader :bot, :sender_id
 
   def initialize(bot)
+    @bot = bot
     @sender_id = bot.sender['id']
   end
 

@@ -1,0 +1,12 @@
+en:
+  bots:
+    get_started:
+      - Hi there, Welcome to Vocabulary Koans Bot!
+      - I will help you learn vocabularies everyday in the fun way :D
+      - Would you like to receive the "Words of the day"?
+    cancel_subscription:
+      - Thank you, you will not receive "Words of the day". I will miss you so much :'(
+      - In case you change your mind in the future. Simply click the "Get Started" button on the menu.
+    set_words_of_the_day: How many maximum word(s) do you want to learn a day?
+    complete_subscription: Thank you, The word list will be sent to you on tomorrow. I'm so happy to do that :D
+

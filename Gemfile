@@ -31,3 +31,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'facebook-messenger', '~> 1.0'
+gem 'sidekiq', '~> 5.1.3'

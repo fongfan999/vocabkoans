@@ -8,11 +8,11 @@
   - low
   - very_low
 
-:logfile: ./log/sidekiq.log
 :verbose: true
 
 development:
   :concurrency: 4
 
 production:
+  :logfile: ./log/sidekiq.log
   :concurrency: 2

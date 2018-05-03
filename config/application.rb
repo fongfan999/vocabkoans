@@ -13,6 +13,5 @@ module Vocabkoans
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
     config.active_job.queue_adapter = :sidekiq
-    config.active_job.queue_name_prefix = "vocabkoans_#{Rails.env}"
   end
 end

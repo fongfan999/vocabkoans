@@ -1,4 +1,6 @@
 class Bot::ApplicationService
+  include Service
+
   attr_reader :bot, :sender_id
 
   def initialize(bot)

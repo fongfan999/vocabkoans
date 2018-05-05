@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_01_074347) do
+ActiveRecord::Schema.define(version: 2018_05_05_134353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "vocabulary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+    t.index ["vocabulary_id"], name: "index_subscriptions_on_vocabulary_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "messenger_uid"
@@ -29,4 +38,6 @@ ActiveRecord::Schema.define(version: 2018_05_01_074347) do
     t.jsonb "sense", default: "{}", null: false
   end
 
+  add_foreign_key "subscriptions", "users"
+  add_foreign_key "subscriptions", "vocabularies"
 end

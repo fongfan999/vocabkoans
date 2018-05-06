@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_05_134353) do
+ActiveRecord::Schema.define(version: 2018_05_06_104255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_05_05_134353) do
     t.string "word"
     t.string "word_class"
     t.jsonb "sense", default: "{}", null: false
+    t.index ["word"], name: "index_vocabularies_on_word"
   end
 
   add_foreign_key "subscriptions", "users"

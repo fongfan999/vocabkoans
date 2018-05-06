@@ -1,4 +1,4 @@
-class Bot::SubscriptionCreator < Bot::Base::Payloader
+class Bot::Subscription::Creator < Bot::Subscription::Application
   def perform
     user.words_of_the_day = bot.text[/\d/]
     user.save

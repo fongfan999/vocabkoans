@@ -1,5 +1,6 @@
 class Payloader::Application
   include QuickRepliesGenerator
+  include I18nScopable
 
   attr_reader :bot
 
@@ -9,12 +10,6 @@ class Payloader::Application
 
   def reply!
     raise NotImplementedError
-  end
-
-  protected
-
-  def i18n_t(key, args = {})
-    I18n.t(key, scope: i18n_scope, **args)
   end
 
   private

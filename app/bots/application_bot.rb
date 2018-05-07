@@ -1,5 +1,6 @@
 class ApplicationBot
   AVAILABLE_EVENTS = %i(message postback).freeze
+  TAG = 'NON_PROMOTIONAL_SUBSCRIPTION'.freeze
 
   include MessengerEventExtractor
 

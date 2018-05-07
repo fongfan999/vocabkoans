@@ -1,0 +1,10 @@
+en:
+  bots:
+    vocabularies:
+      informer: |
+        Good morning!
+        Here is the word list you will learn today:
+
+        %{vocabularies}
+
+        Have a nice day ;).

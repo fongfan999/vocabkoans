@@ -1,4 +1,4 @@
-class Bot::ApplicationService
+class Bot::Base::Payloader
   include Service
 
   attr_reader :bot, :sender_id

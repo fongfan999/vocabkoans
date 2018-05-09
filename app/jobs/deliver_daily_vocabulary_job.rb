@@ -7,12 +7,16 @@ class DeliverDailyVocabularyJob < ApplicationJob
   private
 
   def next_vocabulary_for(user)
-    return if user.subscriptions.created_in_today.not_sending.not_reading.empty?
+    subscription = user_subscriptions_in_today(user).not_sending.first
+    return subscription.vocabulary if subscription
 
-    subscription = user.subscriptions.created_in_today.not_sending.ascending.first
-    return Vocabulary.find(subscription.vocabulary_id) if subscription
+    subscription = user_subscriptions_in_today(user).not_reading.first
+    return subscription.vocabulary if subscription
 
-    subscription = user.subscriptions.created_in_today.not_reading.ascending.first
-    Vocabulary.find(subscription.vocabulary_id)
+    return false
+  end
+
+  def user_subscriptions_in_today(user)
+    @user_subscriptions ||= user.subscriptions.created_in_today.ascending
   end
 end

@@ -4,11 +4,15 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   def perform
     return unless vocabulary
 
-    user.subscriptions.find_by(vocabulary_id: vocabulary.id).touch(:sent_at)
+    subscription.touch(:sent_at)
     Facebook::Messenger::Bot.deliver(payload, access_token: ENV['ACCESS_TOKEN'])
   end
 
   private
+
+  def subscription
+    @subscription ||= user.subscriptions.find_by(vocabulary_id: vocabulary.id)
+  end
 
   def payload
     {
@@ -23,6 +27,6 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   end
 
   def quick_replies
-    text_quick_replies(i18n_t('got_it') => 'MARK_VOCABULARY_AS_READ')
+    text_quick_replies(i18n_t('got_it') => "MARK_VOCABULARY_AS_READ#{subscription.id}")
   end
 end

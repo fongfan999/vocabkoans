@@ -38,7 +38,7 @@ class ApplicationBot
 
   def payloader
     @payloader ||= begin
-      classified_payloader = bot.payload.downcase.classify
+      classified_payloader = bot.payload.downcase.classify.sub(/\d+/, '')
       "Payloader::#{classified_payloader}".constantize.new(bot)
     end
   end

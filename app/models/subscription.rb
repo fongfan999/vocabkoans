@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  include Ordering
+
   belongs_to :user
   belongs_to :vocabulary
 

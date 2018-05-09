@@ -1,4 +1,6 @@
 class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
+  include QuickRepliesGenerator
+
   def perform
     return unless vocabulary
 
@@ -9,10 +11,18 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   private
 
   def payload
-    { tag: ApplicationBot::TAG, recipient: recipient, message: { text: text } }
+    {
+      tag: ApplicationBot::TAG,
+      recipient: recipient,
+      message: { text: text, quick_replies: quick_replies }
+    }
   end
 
   def text
     vocabulary.word
+  end
+
+  def quick_replies
+    text_quick_replies(i18n_t('got_it') => 'MARK_VOCABULARY_AS_READ')
   end
 end

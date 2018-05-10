@@ -1,5 +1,7 @@
 class DeliverDailyVocabularyJob < ApplicationJob
   def perform(user)
+    return false if user.last_read_vocabulary_at.nil?
+
     vocabulary = next_vocabulary_for(user)
     Bot::Vocabulary::Deliverer.perform(user, vocabulary)
   end
@@ -10,10 +12,7 @@ class DeliverDailyVocabularyJob < ApplicationJob
     subscription = user_subscriptions_in_today(user).not_sending.first
     return subscription.vocabulary if subscription
 
-    subscription = user_subscriptions_in_today(user).not_reading.first
-    return subscription.vocabulary if subscription
-
-    return false
+    false
   end
 
   def user_subscriptions_in_today(user)

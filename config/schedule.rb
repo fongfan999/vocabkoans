@@ -6,3 +6,8 @@ set :output, Rails.root.join('log/cron.log').to_s
 every 1.day, at: '0am' do
   rake 'vocabulary:inform_users'
 end
+
+# Eg: Run from 7:45AM to 7:45PM, every 1 hour when the time difference is 15
+every "#{60 - TIME_DIFFERENCE_OF_VOCAB_DEVLIERY} 7-20/1 * * *" do
+  rake 'vocabulary:devliver'
+end

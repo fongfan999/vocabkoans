@@ -6,7 +6,7 @@ class DailyVocabulary
   end
 
   def save
-    return false if user.subscriptions.created_in_today.exists?
+    return false if user.subscriptions.in_today.exists?
 
     params = random_availabilities.map { |vocab| { vocabulary_id: vocab.id } }
     user.subscriptions.build(params)

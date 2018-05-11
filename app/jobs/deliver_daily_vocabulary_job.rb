@@ -27,6 +27,6 @@ class DeliverDailyVocabularyJob < ApplicationJob
   end
 
   def user_subscriptions_in_today(user = nil)
-    @_user_subscriptions_in_today ||= user.subscriptions.created_in_today
+    @_user_subscriptions_in_today ||= user.subscriptions.in_today
   end
 end

@@ -7,6 +7,12 @@ class Bot::Vocabulary::Application < Bot::Base::Deliverer
     @user, @vocabulary = user, vocabulary
   end
 
+  protected
+
+  def default_payload
+    { tag: ApplicationBot::TAG, recipient: recipient }
+  end
+
   private
 
   def i18n_scope

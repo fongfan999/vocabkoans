@@ -14,7 +14,7 @@ class Bot::Vocabulary::Informer < Bot::Vocabulary::Application
   end
 
   def payload
-    { tag: ApplicationBot::TAG, recipient: recipient, message: { text: text } }
+    default_payload.merge(message: { text: text })
   end
 
   def text

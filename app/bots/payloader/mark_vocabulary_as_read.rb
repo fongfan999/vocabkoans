@@ -4,6 +4,6 @@ class Payloader::MarkVocabularyAsRead < Payloader::Application
     user.touch(:last_read_vocabulary_at)
 
     # TODO: Randomize the response
-    bot.reply(text: "You're welcome")
+    # bot.reply(text: "You're welcome")
   end
 end

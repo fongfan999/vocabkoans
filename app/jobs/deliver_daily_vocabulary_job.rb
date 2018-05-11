@@ -8,14 +8,25 @@ class DeliverDailyVocabularyJob < ApplicationJob
 
   private
 
-  def next_vocabulary_for(user)
-    subscription = user_subscriptions_in_today(user).not_sending.first
-    return subscription.vocabulary if subscription
+  MAX_DEFINITIONS = 2.freeze
 
-    false
+  def next_subscription_by_vocabulary_sense_index
+    user_subscriptions_in_today.ascending(:vocabulary_sense_index).find do |sub|
+      next if sub.vocabulary_sense_index > MAX_DEFINITIONS
+
+      sub.increment!(:vocabulary_sense_index)
+      sub.vocabulary.sense.at(sub.vocabulary_sense_index)
+    end
   end
 
-  def user_subscriptions_in_today(user)
-    @user_subscriptions ||= user.subscriptions.created_in_today.ascending
+  def next_vocabulary_for(user)
+    subscription = user_subscriptions_in_today(user).not_sending.ascending.first
+    return subscription.vocabulary if subscription
+
+    next_subscription_by_vocabulary_sense_index&.vocabulary
+  end
+
+  def user_subscriptions_in_today(user = nil)
+    @_user_subscriptions_in_today ||= user.subscriptions.created_in_today
   end
 end

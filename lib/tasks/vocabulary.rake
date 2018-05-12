@@ -5,7 +5,7 @@ namespace :vocabulary do
   end
 
   desc 'Send new vocabularies in detail to users'
-  task devliver: :environment do
+  task deliver: :environment do
     today_user_ids = Subscription.in_today.distinct.pluck(:user_id)
 
     User.where(id: today_user_ids).find_each do |user|

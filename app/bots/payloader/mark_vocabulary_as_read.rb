@@ -1,5 +1,5 @@
 class Payloader::MarkVocabularyAsRead < Payloader::Application
-  def reply!
+  def perform
     user = User.find_by(messenger_uid: bot.sender['id'])
     user.touch(:last_read_vocabulary_at)
 

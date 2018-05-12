@@ -1,5 +1,5 @@
 class Payloader::GetStarted < Payloader::Application
-  def reply!
+  def perform
     sentences = i18n_t(:get_started).dup
     call_to_action = sentences.pop
 

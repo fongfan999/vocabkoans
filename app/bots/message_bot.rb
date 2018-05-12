@@ -1,7 +1,7 @@
 class MessageBot < ApplicationBot
   def perform
     bot.typing_on
-    return payloader.reply! if define_singleton_payload_on_bot
+    return payloader.perform if define_singleton_payload_on_bot
 
     # TODO: Notify administrators to reply this user
     bot.reply(text: %Q(You texted "#{bot.text}"))

@@ -8,7 +8,7 @@ class Payloader::Application
     @bot = bot
   end
 
-  def reply!
+  def perform
     raise NotImplementedError
   end
 

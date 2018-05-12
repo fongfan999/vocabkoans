@@ -1,7 +1,7 @@
 class Payloader::SetWordsOfTheDay < Payloader::Application
   GOALS = [1, [3, true], 5].freeze
 
-  def reply!
+  def perform
     bot.reply(text: i18n_t(:set_words_of_the_day), quick_replies: quick_replies)
   end
 

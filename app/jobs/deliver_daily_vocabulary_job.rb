@@ -20,7 +20,7 @@ class DeliverDailyVocabularyJob < ApplicationJob
   end
 
   def next_vocabulary_for(user)
-    subscription = user_subscriptions_in_today(user).not_sending.ascending.first
+    subscription = user_subscriptions_in_today(user).not_sent.ascending.first
     return subscription.vocabulary if subscription
 
     next_subscription_by_vocabulary_sense_index&.vocabulary

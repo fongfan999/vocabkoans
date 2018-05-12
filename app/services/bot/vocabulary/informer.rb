@@ -18,6 +18,6 @@ class Bot::Vocabulary::Informer < Bot::Vocabulary::Application
   end
 
   def text
-    i18n_t('informer', vocabularies: daily_vocabulary.formatted)
+    i18n_t('inform', vocabularies: daily_vocabulary.formatted)
   end
 end

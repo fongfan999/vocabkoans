@@ -19,4 +19,9 @@ namespace :vocabulary do
       DeliverDailyVocabularyJob.set(wait: wait_duration).perform_later(user)
     end
   end
+
+  desc 'Deliver summary at the end of the day'
+  task summarize: :environment do
+    User.active.find_each { |user| Bot::Vocabulary::Summary.perform(user) }
+  end
 end

@@ -11,3 +11,7 @@ end
 every "#{60 - TIME_DIFFERENCE_OF_VOCAB_DEVLIERY} 7-20/1 * * *" do
   rake 'vocabulary:deliver'
 end
+
+every 1.day, at: '2pm' do
+  rake 'vocabulary:summarize'
+end

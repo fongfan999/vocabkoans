@@ -9,7 +9,7 @@ en:
 
         Have a nice day ;).
       do_you_know:
-        "Do you know? The word "%{word}" also has another meaning 😋: "
+        "Do you know? The word \"%{word}\" also has another meaning 😋: "
       combo: |
         %{word} (%{word_class}): %{definition}
 

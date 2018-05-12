@@ -5,6 +5,7 @@ en:
         Good morning! Have a nice day ;)
 
         Here is the word list you will learn today:
+
         %{vocabularies}
       do_you_know:
         "Do you know? The word \"%{word}\" also has another meaning 😋: "

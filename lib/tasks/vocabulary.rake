@@ -1,10 +1,10 @@
 namespace :vocabulary do
   desc 'Inform users what words they will learn today'
-  task inform_users: :environment do
+  task inform: :environment do
     User.active.find_each { |user| Bot::Vocabulary::Informer.perform(user) }
   end
 
-  desc 'Send new vocabularies in detail to users'
+  desc 'Deliver new vocabularies in detail to users'
   task deliver: :environment do
     today_user_ids = Subscription.in_today.distinct.pluck(:user_id)
 

@@ -4,7 +4,7 @@ set :environment, Rails.env
 set :output, Rails.root.join('log/cron.log').to_s
 
 every 1.day, at: '0am' do
-  rake 'vocabulary:inform_users'
+  rake 'vocabulary:inform'
 end
 
 # Eg: Run from 7:45AM to 7:45PM, every 1 hour when the time difference is 15

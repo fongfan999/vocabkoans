@@ -28,6 +28,7 @@ group :development do
 
   gem 'mina', require: false
   gem 'mina-puma', require: false,  github: 'untitledkingdom/mina-puma'
+  gem 'mina-sidekiq', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

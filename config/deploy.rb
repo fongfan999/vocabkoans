@@ -2,19 +2,11 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
 require 'mina/puma'
+require_relative 'mina/production'
 
 set :repository, 'git@github.com:fongfan999/vocabkoans.git'
 set :shared_dirs, fetch(:shared_dirs, []).push('tmp/sockets', 'tmp/pids')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key', '.env')
-
-task :production do
-  set :user, 'ubuntu'
-  set :domain, '13.229.229.72'
-  set :identity_file, '~/.ssh/ec2-default.pem'
-
-  set :deploy_to, '/var/www/vocabkoans'
-  set :branch, 'master'
-end
 
 task :remote_environment do
   invoke :'rvm:use', '2.5.1@vocabkoans'

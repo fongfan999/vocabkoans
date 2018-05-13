@@ -27,7 +27,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'mina', require: false
-  gem 'mina-puma', require: false,  github: 'untitledkingdom/mina-puma'
+  gem 'mina-puma', require: false, github: 'untitledkingdom/mina-puma'
   gem 'mina-sidekiq', require: false
 end
 

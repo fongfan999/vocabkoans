@@ -9,9 +9,10 @@ module OxfordDictionaryScraper
 
     def data_hash
       {
-        word: word,
+        word:       word,
         word_class: get_word_class,
-        sense: get_definition_include_examples
+        ipa:        get_ipa,
+        sense:      get_definition_include_examples
       }
     end
 
@@ -21,8 +22,9 @@ module OxfordDictionaryScraper
       doc.search('.webtop-g .pos').text
     end
 
-    def get_sn_gs_li
-      doc.search('.sn-gs .sn-g')
+    def get_ipa
+      content = doc.search(".pron-gs.ei-g .pron-g[geo='n_am'] span.phon").first
+      content.present? ? content.text.gsub('NAmE/', '').chomp('/') : ''
     end
 
     def get_definition_include_examples

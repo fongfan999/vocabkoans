@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/untitledkingdom/mina-puma.git
+  revision: f41052e0b4c0f210b9d004b79602670dca0eff27
+  specs:
+    mina-puma (1.1.0)
+      mina (~> 1.2.0)
+      puma (>= 2.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,6 +56,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
+    chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -56,6 +65,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     crass (1.0.4)
     dotenv (2.4.0)
     dotenv-rails (2.4.0)
@@ -73,6 +83,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -86,6 +97,11 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mimemagic (0.3.2)
+    mina (1.2.3)
+      open4 (~> 1.3.4)
+      rake
+    mina-sidekiq (1.0.3)
+      mina (>= 1.0.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -94,9 +110,12 @@ GEM
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    open4 (1.3.4)
     pg (1.0.0)
     puma (3.11.4)
     rack (2.0.5)
+    rack-protection (2.0.1)
+      rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
@@ -127,6 +146,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
     ruby_dep (1.5.0)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -139,6 +159,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sidekiq (5.1.3)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -169,6 +194,8 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    whenever (0.10.0)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -179,17 +206,23 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails (~> 2.4)
   facebook-messenger (~> 1.0)
+  ice_nine (~> 0.11.2)
   listen (>= 3.0.5, < 3.2)
+  mina
+  mina-puma!
+  mina-sidekiq
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.0)
   sass-rails (~> 5.0)
+  sidekiq (~> 5.1.3)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  whenever (~> 0.10.0)
 
 RUBY VERSION
    ruby 2.5.1p57

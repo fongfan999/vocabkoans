@@ -1,0 +1,18 @@
+# bundle exec sidekiq -C config/sidekiq.yml
+
+:queues:
+  - very_high
+  - high
+  - medium
+  - default
+  - low
+  - very_low
+
+:verbose: true
+
+development:
+  :concurrency: 4
+
+production:
+  :logfile: ./log/sidekiq.log
+  :concurrency: 2

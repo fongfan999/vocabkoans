@@ -1,0 +1,8 @@
+en:
+  'yes': 'Yes'
+  'no': 'No'
+  cancel: Cancel
+
+  word:
+    one: 1 word
+    other: '%{count} words'

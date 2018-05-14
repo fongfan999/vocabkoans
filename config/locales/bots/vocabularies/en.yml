@@ -1,0 +1,33 @@
+en:
+  bots:
+    vocabularies:
+      inform: |
+        Good morning! Have a nice day ;)
+
+        Here is the word list you will learn today:
+
+        %{vocabularies}
+      do_you_know:
+        "Do you know? The word \"%{word}\" also has another meaning 😋: "
+      combo: |
+        %{word} (%{word_class}): %{definition}
+
+        Examples:
+        %{examples}
+      got_it: Got it. Thanks!
+      summary:
+        today:
+          bad: |
+            You didn't achieve the goal for today, but better late than never.
+
+            Be better on tomorrow! ;)
+          good: |
+            You achieved the goal for today.
+            Well done! Keep going!
+        all_time:
+          one: "Summary: You've learned 1 vocabulary since %{date}."
+          other: |
+            🇬🇧 SUMMARY 🇬🇧
+
+            You've learned %{count} vocabularies since %{date}.
+

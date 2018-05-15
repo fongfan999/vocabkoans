@@ -40,7 +40,7 @@ class DailyVocabularyCreator
   private
 
   def _formatted_vocab(vocabulary, index = 0)
-    "#{index + 1}. #{_word_with_class(vocabulary)}"
+    "#{index + 1}. #{_formatted_word_with_class(vocabulary)}"
   end
 
   def _formatted_word_with_class(vocabulary)

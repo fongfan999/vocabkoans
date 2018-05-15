@@ -1,4 +1,4 @@
-class Bot::Vocabulary::Summary < Bot::Vocabulary::Application
+class Bot::Vocabulary::Summarizer < Bot::Vocabulary::Application
   def perform
     deliver_for_today && deliver_for_all_time
   end

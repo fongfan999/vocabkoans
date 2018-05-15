@@ -22,6 +22,6 @@ namespace :vocabulary do
 
   desc 'Deliver summary at the end of the day'
   task summarize: :environment do
-    User.active.find_each { |user| Bot::Vocabulary::Summary.perform(user) }
+    User.active.find_each { |user| Bot::Vocabulary::Summarizer.perform(user) }
   end
 end

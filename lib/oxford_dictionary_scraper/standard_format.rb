@@ -6,8 +6,12 @@ module OxfordDictionaryScraper
       @str = str
     end
 
-    def avoicd_coincident_chars
+    def avoid_coincident_chars
       str.gsub('(=', '( =')
+    end
+
+    def remove_suffix
+      str.gsub(/[ 0-9]\w+/, '')
     end
   end
 end

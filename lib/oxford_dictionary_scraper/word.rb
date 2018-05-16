@@ -19,7 +19,6 @@ module OxfordDictionaryScraper
     private
 
     def normalize_word
-      byebug
       word.scan(/\d+/).empty? ? word : StandardFormat.new(word).remove_suffix
     end
 

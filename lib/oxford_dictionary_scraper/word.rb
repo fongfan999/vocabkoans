@@ -33,10 +33,11 @@ module OxfordDictionaryScraper
       definition_include_examples = []
 
       sn_gs_li.each do |div|
-        definition_value = div.search('.def').text
-        example_divs     = div.search('.x-gs .x-g .x')
-        examples         = example_divs.map { |div| div.text }
-        definition_include_examples << { definition: definition_value, examples: examples }
+        definition_value    = div.search('.def').text
+        stardard_definition = StandardFormat.new(definition_value).avoicd_coincident_chars
+        example_divs        = div.search('.x-gs .x-g .x')
+        examples            = example_divs.map { |div| StandardFormat.new(div.text).avoicd_coincident_chars }
+        definition_include_examples << { definition: stardard_definition, examples: examples }
       end
 
       definition_include_examples

@@ -1,12 +1,13 @@
 require 'nokogiri'
 require 'open-uri'
+require 'oxford_dictionary_scraper/standard_format.rb'
 require 'oxford_dictionary_scraper/scraper.rb'
 require 'oxford_dictionary_scraper/word.rb'
 require 'oxford_dictionary_scraper/importer.rb'
 
 namespace :oxford_3000_words_scraper do
   desc "Scraping 3000 words from Oxford Dictionary"
-  task :scrap => :environment do
+  task :scrape => :environment do
     start_time   = Time.current.to_i
     scraped_data = OxfordDictionaryScraper::Scraper.new.scraping
 

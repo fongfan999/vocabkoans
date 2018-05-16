@@ -3,6 +3,8 @@ module OxfordDictionaryScraper
     def initialize; end
 
     def import
+      return false if Vocabulary.exists?
+
       data_hash = get_data_hash
       Vocabulary.create(data_hash)
     end

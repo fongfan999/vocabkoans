@@ -1,5 +1,5 @@
 module Postman
-  class GeneralAnouncement < Application
+  class GeneralAnnouncement < Application
 
     def send_all
       all_messenger_uids.each do |messenger_uid|
@@ -21,7 +21,7 @@ module Postman
     end
 
     def all_messenger_uids
-      @all_messenger_uids = User.all.map(&:messenger_uid)
+      @all_messenger_uids = User.pluck(:messenger_uid)
     end
   end
 end

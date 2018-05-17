@@ -15,9 +15,10 @@ MESSENGER_PROPERTIES = {
       composer_input_disabled: true,
       call_to_actions: [
         { type: 'postback', title: 'Get Started', payload: 'GET_STARTED' },
-        { type: 'web_url',  title: 'Feedback',    url: FEEDBACK_FORM_URL }
+        { type: 'web_url',  title: 'Feedback',    url: 'https://goo.gl/forms/t5zzRizb9HNrw94I3' }
       ]
     }
   ]
 }.deep_freeze
+
 Facebook::Messenger::Profile.set(MESSENGER_PROPERTIES, access_token: ENV['ACCESS_TOKEN'])

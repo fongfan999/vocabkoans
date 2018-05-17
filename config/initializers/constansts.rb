@@ -1,3 +1,1 @@
 TIME_DIFFERENCE_OF_VOCAB_DEVLIERY = 15.freeze
-
-FEEDBACK_FORM_URL = 'https://goo.gl/forms/t5zzRizb9HNrw94I3'

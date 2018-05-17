@@ -14,7 +14,8 @@ MESSENGER_PROPERTIES = {
       locale: 'default',
       composer_input_disabled: true,
       call_to_actions: [
-        { type: 'postback', title: 'Get Started', payload: 'GET_STARTED' }
+        { type: 'postback', title: 'Get Started', payload: 'GET_STARTED' },
+        { type: 'web_url',  title: 'Feedback',    url: FEEDBACK_FORM_URL }
       ]
     }
   ]

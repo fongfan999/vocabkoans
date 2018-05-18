@@ -7,7 +7,8 @@ class MessageBot < ApplicationBot
     # bot.reply(text: %Q(You texted "#{bot.text}"))
 
     # Temporary bypass Facebook reviews
-    Payloader::BypassFacebookReviews.perform(bot)
+    bypasser = Payloader::BypassFacebookReviews.new(bot)
+    bypasser.perform
   end
 
   private

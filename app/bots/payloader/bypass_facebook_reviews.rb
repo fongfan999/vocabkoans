@@ -1,5 +1,5 @@
 module Payloader
-  class BypassFacebookReviews < ApplicationBot
+  class BypassFacebookReviews < Application
     def perform
       lowercase_text = bot.text.downcase
 

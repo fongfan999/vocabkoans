@@ -1,24 +1,15 @@
-# README
+# Welcome to Vocabulary Koans
+## What the heck is it?
+[Vocabulary Koans](https://m.me/vocabkoans) (@vocabkoans) is a application that will remind users to learn new vocabularies daily via the Facebook Messenger platform.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fotin, the bot name, will deliver new vocabulary at around 1 hour intervals from the morning to the evening until user's the number of the vocabularies a day is reached. Just one more thing, the bot will not deliver a new vocabulary if the last one isn't marked as read.
 
-Things you may want to cover:
+## Contributing
+Any contribution will be more than welcome! **Vocabulary Koans** is still in the early stage of development, so it's your chance to make a difference.
+We encourage you to contribute to the project! Please follow the instruction below:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Fork it (https://github.com/fongfan999/vocabkoans/fork)
+- Create your feature branch (git checkout -b my-new-feature)
+- Commit your changes (git commit -am 'Add some feature')
+- Push to the branch (git push origin my-new-feature)
+- Create a new Pull Request

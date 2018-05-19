@@ -9,11 +9,11 @@ module OxfordDictionaryScraper
 
     def data_hash
       {
-        word:        normalize_word,
-        word_class:  get_word_class,
-        ipa:         get_ipa,
-        sense:       get_definition_include_examples,
-        pronoun_url: get_pronoun_url
+        word:              normalize_word,
+        word_class:        get_word_class,
+        ipa:               get_ipa,
+        sense:             get_definition_include_examples,
+        pronunciation_url: get_pronunciation_url
       }
     end
 
@@ -32,7 +32,7 @@ module OxfordDictionaryScraper
       content.present? ? content.text.gsub('NAmE/', '').chomp('/') : ''
     end
 
-    def get_pronoun_url
+    def get_pronunciation_url
       content = doc.search(".pron-gs.ei-g .pron-g .sound.icon-audio").first
       content.present? ? content.attr('data-src-mp3') : ''
     end

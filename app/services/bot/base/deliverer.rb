@@ -15,6 +15,10 @@ class Bot::Base::Deliverer
 
   private
 
+  def default_payload
+    { tag: ApplicationBot::TAG, recipient: recipient }
+  end
+
   def recipient
     { id: user.messenger_uid }
   end

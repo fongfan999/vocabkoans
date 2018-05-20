@@ -5,7 +5,11 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
     return unless vocabulary
 
     deliver_do_you_know unless sense_index.zero?
-    Facebook::Messenger::Bot.deliver(payload, access_token: ENV['ACCESS_TOKEN'])
+    Facebook::Messenger::Bot.deliver(payload(:text), access_token: ENV['ACCESS_TOKEN'])
+    Facebook::Messenger::Bot.deliver(
+      payload(:audio),
+      access_token: ENV['ACCESS_TOKEN']
+    ) if vocabulary.pronunciation_url.present?
 
     subscription.touch(:sent_at) && user.update(last_read_vocabulary_at: nil)
   end
@@ -26,8 +30,24 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
     subscription.vocabulary_sense_index
   end
 
-  def payload
-    default_payload.merge(message: { text: text, quick_replies: quick_replies })
+  def payload(type = :text)
+    message =
+      case type
+      when :text then { text: text }
+      when :audio then { attachment: audio }
+      end
+    message = message.merge(quick_replies: quick_replies)
+    default_payload.merge(message: message)
+  end
+
+  def audio
+    {
+      type: :audio,
+      payload: {
+        url: vocabulary.pronunciation_url,
+        is_reusable: true
+      }
+    }
   end
 
   def text

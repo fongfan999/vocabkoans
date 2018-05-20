@@ -9,6 +9,7 @@ module OxfordDictionaryScraper
 
     def data_hash
       {
+        original_word:     word,
         word:              normalize_word,
         word_class:        get_word_class,
         ipa:               get_ipa,

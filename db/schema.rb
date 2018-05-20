@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_134710) do
+ActiveRecord::Schema.define(version: 2018_05_20_095154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_05_19_134710) do
     t.datetime "updated_at", null: false
     t.string "ipa"
     t.string "pronunciation_url"
+    t.string "original_word"
     t.index ["word"], name: "index_vocabularies_on_word"
   end
 

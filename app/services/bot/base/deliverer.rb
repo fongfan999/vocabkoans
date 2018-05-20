@@ -7,6 +7,12 @@ class Bot::Base::Deliverer
     @user = user
   end
 
+  protected
+
+  def deliver_with(payload)
+    Facebook::Messenger::Bot.deliver(payload, access_token: ENV['ACCESS_TOKEN'])
+  end
+
   private
 
   def recipient

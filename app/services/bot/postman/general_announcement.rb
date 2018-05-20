@@ -3,9 +3,7 @@ module Postman
 
     def send_all
       all_messenger_uids.each do |messenger_uid|
-        Facebook::Messenger::Bot.deliver(
-          payload(messenger_uid), access_token: ENV['ACCESS_TOKEN']
-        )
+        deliver_with(payload(messenger_uid))
       end
     end
 

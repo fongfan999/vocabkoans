@@ -5,11 +5,8 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
     return unless vocabulary
 
     deliver_do_you_know unless sense_index.zero?
-    Facebook::Messenger::Bot.deliver(payload(:text), access_token: ENV['ACCESS_TOKEN'])
-    Facebook::Messenger::Bot.deliver(
-      payload(:audio),
-      access_token: ENV['ACCESS_TOKEN']
-    ) if vocabulary.pronunciation_url.present?
+    deliver_with(payload(:text))
+    deliver_with(payload(:audio)) if vocabulary.pronunciation_url.present?
 
     subscription.touch(:sent_at) && user.update(last_read_vocabulary_at: nil)
   end
@@ -17,9 +14,10 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   private
 
   def deliver_do_you_know
-    Facebook::Messenger::Bot.deliver(default_payload.merge(
-      message: { text: i18n_t('do_you_know', word: vocabulary.word) }
-    ), access_token: ENV['ACCESS_TOKEN'])
+    payload = default_payload.merge(message: {
+      text: i18n_t('do_you_know', word: vocabulary.word)
+    })
+    deliver_with(payload)
   end
 
   def subscription

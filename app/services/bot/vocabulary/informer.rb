@@ -5,7 +5,7 @@ class Bot::Vocabulary::Informer < Bot::Vocabulary::Application
     @daily_vocabulary = DailyVocabularyCreator.perform(user)
     return unless @daily_vocabulary
 
-    Facebook::Messenger::Bot.deliver(payload, access_token: ENV['ACCESS_TOKEN'])
+    deliver_with(payload)
     user.touch(:last_read_vocabulary_at)
   end
 

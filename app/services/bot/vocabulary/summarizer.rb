@@ -6,21 +6,21 @@ class Bot::Vocabulary::Summarizer < Bot::Vocabulary::Application
   private
 
   def deliver_for_today
-    indexs = user.subscriptions.in_today.pluck(:vocabulary_sense_index)
-    status = indexs.all? { |index| index > 0 } ? 'good' : 'bad'
+    indexs  = user.subscriptions.in_today.pluck(:vocabulary_sense_index)
+    status  = indexs.all? { |index| index > 0 } ? 'good' : 'bad'
+    payload = default_payload.merge(message: { text: i18n_t("today.#{status}") })
 
-    Facebook::Messenger::Bot.deliver(default_payload.merge(
-      message: { text: i18n_t("today.#{status}") }
-    ), access_token: ENV['ACCESS_TOKEN'])
+    deliver_with(payload)
   end
 
   def deliver_for_all_time
-    count = user.subscriptions.sent.count
-    date  = user.created_at.to_date.to_s(:long_ordinal)
+    count   = user.subscriptions.sent.count
+    date    = user.created_at.to_date.to_s(:long_ordinal)
+    payload = default_payload.merge(message: {
+      text: i18n_t('all_time', count: count, date: date)
+    })
 
-    Facebook::Messenger::Bot.deliver(default_payload.merge(
-      message: { text: i18n_t('all_time', count: count, date: date) }
-    ), access_token: ENV['ACCESS_TOKEN'])
+    deliver_with(payload)
   end
 
   def i18n_scope

@@ -6,8 +6,8 @@ class Bot::Vocabulary::Summarizer < Bot::Vocabulary::Application
   private
 
   def deliver_for_today
-    indexs  = user.subscriptions.in_today.pluck(:vocabulary_sense_index)
-    status  = indexs.all? { |index| index > 0 } ? 'good' : 'bad'
+    indexes  = user.subscriptions.in_today.pluck(:vocabulary_sense_index)
+    status  = indexes.all? { |index| index > 0 } ? 'good' : 'bad'
     payload = default_payload.merge(message: { text: i18n_t("today.#{status}") })
 
     deliver_with(payload)

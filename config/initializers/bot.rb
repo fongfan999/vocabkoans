@@ -15,7 +15,15 @@ MESSENGER_PROPERTIES = {
       composer_input_disabled: false,
       call_to_actions: [
         { type: 'postback', title: 'Get Started', payload: 'GET_STARTED' },
-        { type: 'web_url',  title: 'Feedback',    url: 'https://goo.gl/forms/t5zzRizb9HNrw94I3' }
+        {
+          title: 'Settings',
+          type: 'nested',
+          call_to_actions: [
+            { title: 'Subscribe', type: 'postback', payload: 'SET_WORDS_OF_THE_DAY' },
+            { title: 'Unsubscribe', type: 'postback', payload: 'CANCEL_SUBSCRIPTION' }
+          ]
+        },
+        { type: 'web_url',  title: 'Feedback', url: 'https://goo.gl/forms/t5zzRizb9HNrw94I3' }
       ]
     }
   ]

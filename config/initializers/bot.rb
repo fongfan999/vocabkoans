@@ -19,7 +19,7 @@ MESSENGER_PROPERTIES = {
           title: 'Settings',
           type: 'nested',
           call_to_actions: [
-            { title: 'Start/Update your subscription', type: 'postback', payload: 'SET_WORDS_OF_THE_DAY' },
+            { title: 'Start/Update my subscription', type: 'postback', payload: 'SET_WORDS_OF_THE_DAY' },
             { title: 'Unsubscribe', type: 'postback', payload: 'CANCEL_SUBSCRIPTION' }
           ]
         },

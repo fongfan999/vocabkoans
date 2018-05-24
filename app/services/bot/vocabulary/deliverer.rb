@@ -54,7 +54,8 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
     examples = sense['examples'].map { |ex| "- #{ex}" }.join("\n")
 
     i18n_t('combo', word: vocabulary.word, word_class: vocabulary.word_class,
-                    definition: definition, examples: examples)
+                    definition: definition, examples: examples,
+                    ipa: vocabulary.ipa)
   end
 
   def quick_replies

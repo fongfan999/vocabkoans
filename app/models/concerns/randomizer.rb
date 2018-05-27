@@ -4,6 +4,6 @@ module Randomizer
   included do
     # OPTIMIZE This approach might be slow but it's okay now
     scope :random_ordering, -> { order(Arel.sql('RANDOM()')) }
-    scope :random, ->(limit = nil) { random_ordering.first(limit) }
+    scope :random, ->(limit = nil) { random_ordering.take(limit) }
   end
 end

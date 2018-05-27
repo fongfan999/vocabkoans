@@ -1,6 +1,8 @@
 class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   include QuickRepliesGenerator
 
+  EX_LEN = 2.freeze
+
   def perform
     return unless vocabulary
 
@@ -51,7 +53,7 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
   def text
     sense = vocabulary.sense[sense_index]
     definition = sense['definition']
-    examples = sense['examples'].map { |ex| "- #{ex}" }.join("\n")
+    examples = sense['examples'].take(EX_LEN).map { |ex| "- #{ex}" }.join("\n")
 
     i18n_t('combo', word: vocabulary.word, word_class: vocabulary.word_class,
                     definition: definition, examples: examples,

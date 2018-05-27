@@ -12,7 +12,6 @@ en:
       combo: |
         %{word} (%{word_class})
         %{ipa}
-
         %{definition}
 
         Examples:

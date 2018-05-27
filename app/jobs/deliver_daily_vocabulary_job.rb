@@ -1,4 +1,6 @@
 class DeliverDailyVocabularyJob < ApplicationJob
+  MAX_DEFINITIONS = 2.freeze
+
   def perform(user)
     return false if user.last_read_vocabulary_at.nil?
 
@@ -7,8 +9,6 @@ class DeliverDailyVocabularyJob < ApplicationJob
   end
 
   private
-
-  MAX_DEFINITIONS = 2.freeze
 
   def next_subscription_by_vocabulary_sense_index
     user_subscriptions_in_today.ascending(:vocabulary_sense_index).find do |sub|

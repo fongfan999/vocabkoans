@@ -25,7 +25,7 @@ module OxfordDictionaryScraper
     end
 
     def get_word_class
-      doc.search('.webtop-g .pos').text
+      doc.search('.webtop-g .pos').map(&:text).join(', ')
     end
 
     def get_ipa

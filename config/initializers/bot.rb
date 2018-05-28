@@ -29,4 +29,4 @@ MESSENGER_PROPERTIES = {
   ]
 }.deep_freeze
 
-Facebook::Messenger::Profile.set(MESSENGER_PROPERTIES, access_token: ENV['ACCESS_TOKEN'])
+Facebook::Messenger::Profile.set(MESSENGER_PROPERTIES, access_token: ENV['FB_ACCESS_TOKEN'])

@@ -10,7 +10,7 @@ class Bot::Base::Deliverer
   protected
 
   def deliver_with(payload)
-    Facebook::Messenger::Bot.deliver(payload, access_token: ENV['ACCESS_TOKEN'])
+    Facebook::Messenger::Bot.deliver(payload, access_token: ENV['FB_ACCESS_TOKEN'])
   end
 
   private

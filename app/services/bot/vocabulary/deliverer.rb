@@ -52,9 +52,10 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
 
   def text
     sense = vocabulary.sense[sense_index]
+    return short_deliver unless sense
+
     definition = sense['definition']
     examples = sense['examples'].take(EX_LEN).map { |ex| "- #{ex}" }.join("\n")
-
     i18n_t('combo', word: vocabulary.word, word_class: vocabulary.word_class,
                     definition: definition, examples: examples,
                     ipa: vocabulary.ipa)
@@ -62,5 +63,13 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
 
   def quick_replies
     text_quick_replies(i18n_t('got_it') => 'MARK_VOCABULARY_AS_READ')
+  end
+
+  def short_deliver
+    out_of_sense_index = DeliverDailyVocabularyJob::MAX_DEFINITIONS.next
+    subscription.update(vocabulary_sense_index: out_of_sense_index)
+
+    i18n_t('short_combo', word: vocabulary.word, ipa: vocabulary.ipa,
+                          word_class: vocabulary.word_class)
   end
 end

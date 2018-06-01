@@ -16,6 +16,10 @@ en:
 
         Examples:
         %{examples}
+      short_combo: |
+        %{word} (%{word_class})
+        %{ipa}
+        %{definition}
       got_it: Got it. Thanks!
       summary:
         today:

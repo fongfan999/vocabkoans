@@ -70,6 +70,6 @@ class Bot::Vocabulary::Deliverer < Bot::Vocabulary::Application
     subscription.update(vocabulary_sense_index: out_of_sense_index)
 
     i18n_t('short_combo', word: vocabulary.word, ipa: vocabulary.ipa,
-                          word_class: vocabulary.word_class)
+                          word_class: vocabulary.word_class, definition: nil)
   end
 end

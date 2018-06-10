@@ -11,6 +11,8 @@ class Bot::Base::Deliverer
 
   def deliver_with(payload)
     Facebook::Messenger::Bot.deliver(payload, access_token: ENV['FB_ACCESS_TOKEN'])
+  rescue Facebook::Messenger::FacebookError => e
+    SentryJob.perform_later(e)
   end
 
   private
